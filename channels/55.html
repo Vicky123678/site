@@ -239,11 +239,9 @@ input[type=submit]:hover {
           <script src="../js/classie.js"></script> 
           <script src="../js/uisearch.js"></script> 
           <script>
-            console.log(111);
             function submitForm() {
               const name = document.getElementById('fname').value;
               const content = document.getElementById('subject').value;
-              console.log(`submit ${name} ... ${content}`);
               $.ajax({
                   type: "POST",
                   url: "http://8.129.60.216:3000/comment",
