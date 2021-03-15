@@ -239,7 +239,25 @@ input[type=submit]:hover {
           <script src="../js/classie.js"></script> 
           <script src="../js/uisearch.js"></script> 
           <script>
-            new UISearch( document.getElementById( 'sb-search' ) );
+            console.log(111);
+            function submitForm() {
+              const name = document.getElementById('fname').value;
+              const content = document.getElementById('subject').value;
+              console.log(`submit ${name} ... ${content}`);
+              $.ajax({
+                  type: "POST",
+                  url: "http://8.129.60.216:3000/comment",
+                  data: {
+                    name,
+                    content
+                  },
+                  success: function(data) {
+                    alert('submit successful!');
+                    document.getElementById('fname').value = "";
+                    document.getElementById('subject').value = "";
+                   }
+                });
+            }
           </script> 
         </div>
         <div id="sideMenu"> <span class="fa fa-navicon" id="sideMenuClosed"></span> </div>
@@ -314,8 +332,7 @@ input[type=submit]:hover {
                   
                   
                   <div class="container2">
-                    <form action="http://8.129.60.216:3000/comment" method="POST">
-                    <div class="row">
+                     <div class="row">
                       <div class="col-25">
                         <label for="fname">Email</label>
                       </div>
@@ -334,11 +351,10 @@ input[type=submit]:hover {
                       </div>
                     </div>
                     <div class="row">
-                      <input type="submit" value="submit">
+                      <input type="button" value="submit" onclick="submitForm();">
                     </div>
                     </form>
                   </div>
-                </div>
               </div>
             </div>
           </div>
